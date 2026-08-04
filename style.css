@@ -1863,12 +1863,12 @@ transform:translateX(0);
     left:0;
     width:0;
     height:1.5px;
-    background:#B66BE8;
+    background:#25D366;
     transition:.35s ease;
 }
 
 .krom-credit:hover{
-    color:#B66BE8;
+    color:#25D366;
     letter-spacing:1.5px;
 }
 
