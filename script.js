@@ -118,3 +118,31 @@ for(let i = 0; i < 25; i++){
 
     bg.appendChild(node);
 }
+
+
+
+// =====================================
+// MENÚ MÓVIL
+// =====================================
+
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+menuToggle.addEventListener('click', () => {
+
+    navLinks.classList.toggle('nav-active');
+    menuToggle.classList.toggle('active');
+
+});
+
+// Cierra el menú al hacer clic en un link
+document.querySelectorAll('.nav-links a').forEach(link => {
+
+    link.addEventListener('click', () => {
+
+        navLinks.classList.remove('nav-active');
+        menuToggle.classList.remove('active');
+
+    });
+
+});

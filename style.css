@@ -1879,3 +1879,52 @@ transform:translateX(0);
 .krom-credit:hover::after{
     width:100%;
 }
+
+
+
+
+/* MENÚ MÓVIL DESPLEGABLE */
+
+@media(max-width:992px){
+
+    .nav-links{
+        display:flex;
+        flex-direction:column;
+        position:fixed;
+        top:78px;
+        left:0;
+        width:100%;
+        background:#fff;
+        padding:30px 5%;
+        gap:25px;
+        box-shadow:0 15px 30px rgba(0,0,0,.08);
+
+        transform:translateY(-150%);
+        opacity:0;
+        transition:.4s;
+        z-index:999;
+    }
+
+    .nav-links.nav-active{
+        transform:translateY(0);
+        opacity:1;
+    }
+
+    .nav-links a{
+        font-size:18px;
+        text-align:center;
+    }
+
+    /* ANIMACIÓN DEL ÍCONO A "X" */
+
+    .menu-toggle{
+        transition:.3s;
+        z-index:1001;
+        position:relative;
+    }
+
+    .menu-toggle.active i::before{
+        content:"\f00d"; /* ícono de X (font-awesome) */
+    }
+
+}
