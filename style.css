@@ -1785,12 +1785,14 @@ transform:translateX(0);
     }
 
     .hero-shape{
-        right:0;
-        left:0;
-        width:100%;
-        clip-path:none;
-        border-radius:30px;
-    }
+    top:0;
+    height:100%;
+    right:0;
+    left:0;
+    width:100%;
+    clip-path:none;
+    border-radius:30px;
+}
 
     .hero-right img{
         width:100%;
