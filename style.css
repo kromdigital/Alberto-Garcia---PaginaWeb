@@ -525,6 +525,7 @@ transform:translateX(0);
 
     .about-right{
         max-width:100%;
+        
     }
 
     .about-left img{
@@ -557,35 +558,36 @@ transform:translateX(0);
 
     .about-right{
         text-align:center;
+    margin-left:0;
     }
 
     .about-badge{
-        margin-left:auto;
-        margin-right:auto;
-    }
+    margin-left:auto;
+    margin-right:auto;
+}
 
-    .about-item{
-        justify-content:center;
-    }
+.about-item{
+    justify-content:center;
+}
 
-    .about-quote{
-        text-align:center;
-    }
+.about-quote{
+    text-align:center;
+}
 
     .about-quote i{
         display:block;
     }
 
     .about-btn{
-        margin:0 auto;
-        display:block;
-        width:fit-content;
-    }
+    margin:0 auto;
+    display:block;
+    width:fit-content;
+}
 
-    .about-left{
-        display:flex;
-        justify-content:center;
-    }
+.about-left{
+    display:flex;
+    justify-content:center;
+}
 
 }
 
