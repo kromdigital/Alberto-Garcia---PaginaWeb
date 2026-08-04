@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <circle cx="256" cy="256" r="256" fill="#4CAF50"/>
+
+  <!-- Manzana estilizada -->
+  <g transform="translate(256,268)">
+    <!-- Hoja -->
+    <path d="M14,-150 C55,-165 78,-138 66,-108 C48,-118 22,-125 14,-118 Z"
+          fill="#e6f7e6"/>
+
+    <!-- Tallo -->
+    <rect x="-6" y="-150" width="12" height="34" rx="4" fill="#3d9b45"/>
+
+    <!-- Cuerpo de la manzana (dos lóbulos) -->
+    <path d="
+      M0,-95
+      C-70,-110 -128,-55 -128,20
+      C-128,105 -68,150 -8,150
+      C2,150 6,146 0,140
+      C-6,146 -2,150 8,150
+      C68,150 128,105 128,20
+      C128,-55 70,-110 0,-95
+      Z"
+      fill="#ffffff"/>
+
+    <!-- Mordida -->
+    <circle cx="112" cy="10" r="42" fill="#4CAF50"/>
+  </g>
+</svg>

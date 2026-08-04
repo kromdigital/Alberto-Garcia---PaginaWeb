@@ -1,0 +1,746 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:#f5f5f3;
+color:#1f1f1f;
+}
+
+/* HERO */
+
+.recipes-hero{
+height:420px;
+
+background:
+linear-gradient(rgba(0,0,0,.45),
+rgba(0,0,0,.45)),
+url('https://depor.com/resizer/v2/FGBNWTJTXNG2VERRH724ZWXV4Y.jpg?auth=99e288e17b26165437cbe52e89166dccc769a4abf124cf15a9f6a4f0df3d31f2&width=6000&height=4000&quality=90&smart=true');
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+text-align:center;
+
+padding:40px;
+}
+
+.recipes-content h1{
+font-family:'Playfair Display',serif;
+font-size:5rem;
+color:#fff;
+margin-bottom:20px;
+}
+
+.recipes-content p{
+color:#fff;
+font-size:1.2rem;
+line-height:1.8;
+max-width:800px;
+}
+
+/* FILTERS */
+
+.recipes-filter{
+padding:60px 5% 20px;
+margin-top:-30px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.search-box{
+    width:320px;
+    height:54px;
+
+    border:1px solid #e7e7e7;
+    outline:none;
+
+    padding:0 22px;
+
+    border-radius:40px;
+
+    background:#ffffff;
+
+    border:1px solid #dcdcdc;
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,.05);
+
+    font-size:15px;
+
+    color:#222;
+
+    transition:.3s;
+}
+
+
+.search-box:focus{
+    border:1px solid #4CAF50;
+
+    box-shadow:
+    0 0 0 4px rgba(76,175,80,.15),
+    0 10px 25px rgba(0,0,0,.08);
+}
+
+.filter-buttons{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.filter-buttons button{
+border:none;
+
+background:#fff;
+
+padding:14px 22px;
+
+border-radius:40px;
+
+cursor:pointer;
+
+font-weight:600;
+
+transition:.3s;
+}
+
+.filter-buttons button.active,
+.filter-buttons button:hover{
+background:#4CAF50;
+color:#fff;
+}
+
+/* GRID */
+
+.recipes-grid{
+padding:0 5% 100px;
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+
+gap:28px;
+}
+
+/* CARD */
+
+.recipe-card{
+background:#fff;
+
+border-radius:25px;
+
+overflow:hidden;
+
+transition:.35s;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.05);
+}
+
+.recipe-card:hover{
+transform:translateY(-10px);
+}
+
+.recipe-card img{
+width:100%;
+height:240px;
+object-fit:cover;
+}
+
+.recipe-content{
+padding:25px;
+}
+
+.recipe-content h3{
+font-family:'Playfair Display',serif;
+font-size:1.5rem;
+margin-bottom:14px;
+}
+
+.recipe-content p{
+color:#666;
+line-height:1.8;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1200px){
+
+.recipes-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:768px){
+
+.recipes-content h1{
+font-size:3rem;
+}
+
+.recipes-grid{
+grid-template-columns:1fr;
+}
+
+.search-box{
+width:100%;
+}
+
+}
+
+
+
+
+.recipe-filters{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:50px;
+}
+
+.filter-btn{
+height:54px;
+
+border:none;
+
+padding:0 24px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:40px;
+
+background:#fff;
+color:#333;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.3s;
+
+border:1px solid #e7e7e7;
+}
+
+.filter-btn:hover{
+    background:#4CAF50;
+    color:#fff;
+}
+
+.filter-btn.active{
+    background:#4CAF50;
+    color:#fff;
+}
+
+
+
+
+/* =========================================
+   RECIPES GRID
+========================================= */
+
+.recipes-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:28px;
+}
+
+/* =========================================
+   CARD
+========================================= */
+
+.recipe-card{
+    background:#fff;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    transition:.35s;
+
+    border:1px solid #ececec;
+
+    position:relative;
+}
+
+.recipe-card:hover{
+    transform:translateY(-8px);
+
+    box-shadow:
+    0 20px 45px rgba(0,0,0,.08);
+}
+
+/* =========================================
+   IMAGE
+========================================= */
+
+.recipe-card img{
+    width:100%;
+    height:210px;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:.4s;
+}
+
+.recipe-card:hover img{
+    transform:scale(1.04);
+}
+
+/* =========================================
+   TOP TAGS
+========================================= */
+
+.recipe-tags{
+    position:absolute;
+
+    top:14px;
+    left:14px;
+
+    display:flex;
+    gap:10px;
+
+    z-index:3;
+}
+
+.recipe-tags span{
+    background:rgba(255,255,255,.92);
+
+    backdrop-filter:blur(10px);
+
+    padding:7px 12px;
+
+    border-radius:30px;
+
+    font-size:12px;
+    font-weight:600;
+
+    color:#333;
+
+    display:flex;
+    align-items:center;
+    gap:5px;
+
+    box-shadow:
+    0 5px 12px rgba(0,0,0,.08);
+}
+
+/* =========================================
+   BOTTOM CATEGORY TAGS
+========================================= */
+
+.recipe-category{
+    position:absolute;
+
+    bottom:24px;
+    right:14px;
+
+    display:flex;
+    gap:8px;
+
+    z-index:3;
+}
+.recipe-category span{
+    background:#58b95c;
+
+    color:#fff;
+
+    padding:6px 10px;
+
+    border-radius:20px;
+
+    font-size:11px;
+    font-weight:700;
+
+    text-transform:lowercase;
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.recipe-content{
+    padding:22px 22px 70px;
+}
+
+.recipe-content h3{
+    font-family:'Playfair Display', serif;
+
+    font-size:1.45rem;
+
+    line-height:1.3;
+
+    color:#1f1f1f;
+
+    margin-bottom:12px;
+}
+
+.recipe-content p{
+    color:#666;
+
+    line-height:1.7;
+
+    font-size:15px;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:1200px){
+
+    .recipes-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:768px){
+
+    .recipes-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   CTA FINAL
+========================================= */
+
+.recipes-cta{
+    position:relative;
+
+    height:430px;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.55),
+        rgba(0,0,0,.55)
+    ),
+    url('https://nutricare.es/cdn/shop/articles/blog_Menu_Semanal_Saludable__Plan_Facil_Y_Completo_3_5fd49e04-f1cf-483c-89dc-b61819baabeb.jpg?v=1776968097&width=480');
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    overflow:hidden;
+}
+
+.recipes-cta-content{
+    position:relative;
+    z-index:2;
+
+    max-width:850px;
+
+    padding:20px;
+}
+
+.recipes-cta h2{
+    font-family:'Playfair Display', serif;
+
+    font-size:4.5rem;
+
+    line-height:1;
+
+    color:#fff;
+
+    margin-bottom:25px;
+}
+
+.recipes-cta p{
+    color:#fff;
+
+    font-size:1.15rem;
+
+    line-height:1.9;
+
+    margin-bottom:35px;
+}
+
+.recipes-cta-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+
+    background:#4CAF50;
+
+    color:#fff;
+
+    padding:18px 38px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    transition:.35s;
+}
+
+.recipes-cta-btn:hover{
+    transform:translateY(-5px);
+
+    background:#3ea847;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer{
+    background:#f5f5f3;
+
+    padding:90px 5% 40px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr 1fr 1.2fr;
+
+    gap:50px;
+}
+
+/* BRAND */
+
+
+.footer-logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    margin-bottom:25px;
+}
+
+.footer-logo-icon{
+    width:40px;
+    height:40px;
+
+    border-radius:50%;
+
+    background:#4CAF50;
+
+    color:#fff;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-weight:700;
+}
+
+.footer-logo h3{
+    font-family:'Playfair Display', serif;
+
+    font-size:2rem;
+}
+
+.footer-brand p{
+    color:#555;
+
+    line-height:1.9;
+
+    margin-bottom:30px;
+}
+
+/* SOCIALS */
+
+.footer-socials{
+    display:flex;
+    gap:14px;
+}
+
+.footer-socials a{
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    background:#ece9e3;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#222;
+
+    text-decoration:none;
+
+    transition:.35s;
+}
+
+.footer-socials a:hover{
+    background:#4CAF50;
+    color:#fff;
+}
+
+/* LINKS */
+
+.footer-links{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.footer-links h4{
+    font-family:'Playfair Display', serif;
+
+    font-size:1.6rem;
+
+    margin-bottom:10px;
+}
+
+.footer-links a{
+    color:#444;
+
+    text-decoration:none;
+
+    line-height:1.8;
+
+    transition:.3s;
+}
+
+.footer-links a:hover{
+    color:#4CAF50;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .recipes-cta{
+        height:auto;
+        padding:100px 20px;
+    }
+
+    .recipes-cta h2{
+        font-size:3rem;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+/* =========================================
+   PAGE ANIMATIONS
+========================================= */
+
+/* HERO */
+
+.recipes-content{
+    animation:heroFade 1s ease;
+}
+
+/* FILTERS */
+
+.recipes-filter{
+    animation:fadeUp .9s ease;
+}
+
+/* CARDS */
+
+.recipe-card{
+    opacity:0;
+    transform:translateY(40px);
+
+    animation:cardReveal .8s ease forwards;
+}
+
+/* DELAY ENTRE CARDS */
+
+.recipe-card:nth-child(1){ animation-delay:.1s; }
+.recipe-card:nth-child(2){ animation-delay:.2s; }
+.recipe-card:nth-child(3){ animation-delay:.3s; }
+.recipe-card:nth-child(4){ animation-delay:.4s; }
+.recipe-card:nth-child(5){ animation-delay:.5s; }
+.recipe-card:nth-child(6){ animation-delay:.6s; }
+.recipe-card:nth-child(7){ animation-delay:.7s; }
+.recipe-card:nth-child(8){ animation-delay:.8s; }
+
+/* =========================================
+   KEYFRAMES
+========================================= */
+
+@keyframes heroFade{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes cardReveal{
+
+    from{
+        opacity:0;
+        transform:translateY(40px) scale(.96);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+}
