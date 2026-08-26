@@ -8,7 +8,7 @@
 
 <title>Recetas Saludables | Alberto García</title>
 
-<meta name="description" content="Recetas saludables y nutritivas creadas por el nutriólogo Alberto García. Desayunos, almuerzos, cenas, snacks y postres balanceados.">
+<meta name="description" content="Recetas saludables y nutritivas creadas por el nutriólogo Alberto García. Desayunos, comidas, cenas, ensaladas y sopas balanceadas.">
 
 <!-- Open Graph para compartir en redes -->
 <meta property="og:title" content="Recetas Saludables | Alberto García">
@@ -54,7 +54,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         <p>
             Descubre recetas deliciosas y nutritivas
             diseñadas para nutrir tu cuerpo y deleitar
-            tu paladar.
+            tu paladar. Da clic en cualquier tarjeta para
+            ver la receta completa.
         </p>
 
     </div>
@@ -68,7 +69,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     <input
     type="text"
     placeholder="Buscar recetas por nombre..."
-    class="search-box">
+    class="search-box"
+    id="searchBox">
 
     <div class="recipe-filters">
 
@@ -80,190 +82,79 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         Desayunos
     </button>
 
-    <button class="filter-btn" data-filter="almuerzo">
-        Almuerzos
+    <button class="filter-btn" data-filter="comida">
+        Comidas
     </button>
 
     <button class="filter-btn" data-filter="cena">
         Cenas
     </button>
 
-    <button class="filter-btn" data-filter="snack">
-        Snacks
+    <button class="filter-btn" data-filter="ensalada">
+        Ensaladas
     </button>
 
-    <button class="filter-btn" data-filter="postre">
-        Postres
+    <button class="filter-btn" data-filter="sopa">
+        Sopas
     </button>
 
 </div>
 
 </section>
 
-<!-- RECIPES -->
+<!-- RECIPES (se generan con JS a partir de recetas.js) -->
 
-<div class="recipes-grid">
+<div class="recipes-grid" id="recipesGrid"></div>
 
-    <!-- RECETA 1 -->
-    <div class="recipe-card" data-category="desayuno">
-        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1200&auto=format&fit=crop" alt="">
+<p class="no-results" id="noResults" style="display:none;">
+    No se encontraron recetas con ese nombre.
+</p>
 
-        <div class="recipe-tags">
-            <span>⏱ 10 min</span>
-            <span>🔥 320 cal</span>
+<!-- =========================================
+     MODAL DE RECETA
+========================================= -->
+
+<div class="recipe-modal" id="recipeModal">
+
+    <div class="recipe-modal-backdrop" id="modalBackdrop"></div>
+
+    <div class="recipe-modal-content">
+
+        <button class="modal-close" id="modalClose" aria-label="Cerrar">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="modal-image-wrap">
+            <img id="modalImage" src="" alt="">
+            <span class="modal-category-badge" id="modalCategoryBadge"></span>
         </div>
 
-        <div class="recipe-category">
-        <span>alto en proteína</span>
-        <span>vegetariano</span>
+        <div class="modal-body">
+
+            <h2 id="modalTitle"></h2>
+            <p class="modal-tagline" id="modalTagline"></p>
+
+            <div class="modal-columns">
+
+                <div class="modal-ingredients">
+                    <h3><i class="fa-solid fa-list-check"></i> Ingredientes</h3>
+                    <ul id="modalIngredients"></ul>
+                </div>
+
+                <div class="modal-preparation">
+                    <h3><i class="fa-solid fa-utensils"></i> Preparación</h3>
+                    <ol id="modalPreparation"></ol>
+
+                    <div id="modalAcompanamientoWrap">
+                        <h3><i class="fa-solid fa-plate-wheat"></i> Acompañamiento sugerido</h3>
+                        <ul id="modalAcompanamiento"></ul>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="recipe-content">
-            <h3>Avena con Frutas</h3>
-            <p>Desayuno saludable rico en fibra y antioxidantes.</p>
-        </div>
-    </div>
-
-    <!-- RECETA 2 -->
-    <div class="recipe-card" data-category="almuerzo">
-        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=1200&auto=format&fit=crop" alt="">
-
-        <div class="recipe-tags">
-            <span>⏱ 25 min</span>
-            <span>🔥 520 cal</span>
-        </div>
-
-        <div class="recipe-category">
-        <span>alto en proteína</span>
-        <span>vegetariano</span>
-        </div>
-
-        <div class="recipe-content">
-            <h3>Salmón con Vegetales</h3>
-            <p>Almuerzo alto en proteína y omega 3.</p>
-        </div>
-    </div>
-
-    <!-- RECETA 3 -->
-    <div class="recipe-card" data-category="cena">
-        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1200&auto=format&fit=crop" alt="">
-
-        <div class="recipe-tags">
-            <span>⏱ 18 min</span>
-            <span>🔥 280 cal</span>
-        </div>
-
-        <div class="recipe-category">
-        <span>alto en proteína</span>
-        <span>vegetariano</span>
-        </div>
-
-        <div class="recipe-content">
-            <h3>Ensalada Verde</h3>
-            <p>Cena ligera y refrescante para la noche.</p>
-        </div>
-    </div>
-
-    <!-- RECETA 4 -->
-    <div class="recipe-card" data-category="snack">
-        <img src="https://cdn.avena.io/avena-recipes-v2/2024/03/1711743851024.jpeg" alt="">
-
-        <div class="recipe-tags">
-            <span>⏱ 5 min</span>
-            <span>🔥 180 cal</span>
-        </div>
-
-        <div class="recipe-category">
-        <span>alto en proteína</span>
-        <span>vegetariano</span>
-        </div>
-
-        <div class="recipe-content">
-            <h3>Yogurt con Frutos</h3>
-            <p>Snack rápido lleno de proteína y vitaminas.</p>
-        </div>
-    </div>
-
-    <!-- RECETA 5 -->
-    <div class="recipe-card" data-category="desayuno">
-        <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=1200&auto=format&fit=crop" alt="">
-
-        <div class="recipe-tags">
-            <span>⏱ 12 min</span>
-            <span>🔥 340 cal</span>
-        </div>
-
-
-        <div class="recipe-category">
-        <span>alto en proteína</span>
-        <span>vegetariano</span>
-        </div>
-
-        <div class="recipe-content">
-            <h3>Hot Cakes Saludables</h3>
-            <p>Desayuno balanceado con avena y miel natural.</p>
-        </div>
-    </div>
-
-    <!-- RECETA 6 -->
-    <div class="recipe-card" data-category="almuerzo">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCzRT376yia0g5nniVHy-ao_nbcySYUI3kwQ&s" alt="">
-
-        <div class="recipe-tags">
-            <span>⏱ 30 min</span>
-            <span>🔥 600 cal</span>
-        </div>
-
-
-        <div class="recipe-category">
-        <span>alto en proteína</span>
-        <span>vegetariano</span>
-        </div>
-
-        <div class="recipe-content">
-            <h3>Pollo con Arroz Integral</h3>
-            <p>Comida completa ideal para energía diaria.</p>
-        </div>
-    </div>
-
-    <!-- RECETA 7 -->
-    <div class="recipe-card" data-category="cena">
-        <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=1200&auto=format&fit=crop" alt="">
-
-        <div class="recipe-tags">
-            <span>⏱ 20 min</span>
-            <span>🔥 290 cal</span>
-        </div>
-
-        <div class="recipe-category">
-        <span>alto en proteína</span>
-        <span>vegetariano</span>
-        </div>
-
-        <div class="recipe-content">
-            <h3>Pasta Integral</h3>
-            <p>Cena nutritiva y ligera con vegetales frescos.</p>
-        </div>
-    </div>
-
-    <!-- RECETA 8 -->
-    <div class="recipe-card" data-category="postre">
-        <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=1200&auto=format&fit=crop" alt="">
-
-        <div class="recipe-tags">
-            <span>⏱ 8 min</span>
-            <span>🔥 210 cal</span>
-        </div>
-
-        <div class="recipe-category">
-        <span>alto en proteína</span>
-        <span>vegetariano</span>
-        </div>
-
-        <div class="recipe-content">
-            <h3>Parfait de Frutas</h3>
-            <p>Postre saludable con yogurt griego y frutos rojos.</p>
-        </div>
     </div>
 
 </div>
@@ -320,10 +211,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
             <div class="footer-logo">
 
                 <div class="footer-logo-icon">
-                    P
+                    <i class="fa-solid fa-leaf"></i>
                 </div>
 
-                <h3>Alberto Ramírez.</h3>
+                <h3>Alberto García</h3>
 
             </div>
 
@@ -334,13 +225,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
             <div class="footer-socials">
 
-                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.facebook.com/share/1J1XbnekWh/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
 
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.instagram.com/nutriologoalbertogarcia?igsh=MWViaXZjYWxweHBwYw==" target="_blank"><i class="fa-brands fa-instagram"></i></a>
 
-                <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.tiktok.com/@nutriologoalberto2?_r=1&_t=ZS-98VokzjaMwU" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
 
-                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://youtube.com/@albertomoisesgarciacruz?si=gFbiATjiBtK4r50U" target="_blank"><i class="fa-brands fa-youtube"></i></a>
 
             </div>
 
@@ -380,17 +271,17 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
             <h4>Info de Contacto</h4>
 
-            <a href="#">
+            <a href="index.html#contacto">
                 <i class="fa-solid fa-location-dot"></i>
                 C. Montes Celestes 1816, Independencia, 44290 Guadalajara, Jal.
             </a>
 
-            <a href="#">
+            <a href="tel:+523313229323">
                 <i class="fa-solid fa-phone"></i>
-                +52 13313229323
+                +52 33 1322 9323
             </a>
 
-            <a href="#">
+            <a href="mailto:hola@albertoramireznutricion.com">
                 <i class="fa-solid fa-envelope"></i>
                 hola@albertoramireznutricion.com
             </a>
@@ -402,85 +293,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 </footer>
 
 
-
-<script>
-
-const filterButtons = document.querySelectorAll('.filter-btn');
-const recipeCards = document.querySelectorAll('.recipe-card');
-
-filterButtons.forEach(button => {
-
-    button.addEventListener('click', () => {
-
-        // ACTIVE BUTTON
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-
-        button.classList.add('active');
-
-        const filter = button.getAttribute('data-filter');
-
-        recipeCards.forEach(card => {
-
-            if(filter === 'all'){
-
-                card.style.display = 'block';
-
-            } else {
-
-                if(card.dataset.category === filter){
-
-                    card.style.display = 'block';
-
-                } else {
-
-                    card.style.display = 'none';
-
-                }
-
-            }
-
-        });
-
-    });
-
-});
-
-</script>
-
-
-<script>
-
-const searchInput = document.querySelector(".search-box");
-const recipes = document.querySelectorAll(".recipe-card");
-
-searchInput.addEventListener("keyup", () => {
-
-    const searchValue = searchInput.value.toLowerCase();
-
-    recipes.forEach(card => {
-
-        const title =
-        card.querySelector("h3").textContent.toLowerCase();
-
-        const description =
-        card.querySelector("p").textContent.toLowerCase();
-
-        if(
-            title.includes(searchValue) ||
-            description.includes(searchValue)
-        ){
-            card.style.display = "block";
-        } else {
-            card.style.display = "none";
-        }
-
-    });
-
-});
-
-</script>
-
-
+<script src="recetas.js"></script>
 
 </body>
 </html>
