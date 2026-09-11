@@ -41,6 +41,29 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <body>
 
+<!-- =========================================
+     FIREBASE (autenticación y verificación de acceso)
+========================================= -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="auth-guard.js"></script>
+
+<!-- PANTALLA DE VERIFICACIÓN -->
+<div id="authLoading" class="auth-loading">
+    <i class="fa-solid fa-spinner fa-spin"></i>
+    <span>Verificando tu acceso...</span>
+</div>
+
+<!-- BOTÓN CERRAR SESIÓN -->
+<button id="logoutBtn" class="logout-btn" style="display:none;">
+    <i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión
+</button>
+
+<!-- CONTENIDO PROTEGIDO (oculto hasta validar sesión) -->
+<div id="protectedContent" style="display:none;">
+
 <!-- HERO -->
 
 <section class="recipes-hero">
@@ -283,15 +306,23 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
             <a href="mailto:hola@albertoramireznutricion.com">
                 <i class="fa-solid fa-envelope"></i>
-                hola@albertoramireznutricion.com
+                ln.albertomgarcia@gmail.com
             </a>
 
         </div>
 
     </div>
 
+    <div class="footer-bottom-links">
+        <a href="aviso-privacidad.html">Aviso de Privacidad</a>
+        <a href="terminos-condiciones.html">Términos y Condiciones</a>
+        <a href="deslinde-responsabilidad.html">Deslinde de Responsabilidad</a>
+    </div>
+
 </footer>
 
+</div>
+<!-- fin de #protectedContent -->
 
 <script src="recetas.js"></script>
 

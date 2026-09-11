@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Panel de Administración | Alberto García</title>
+
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="icon" type="image/svg+xml" href="logo-nutriologo.svg">
+
+<link rel="stylesheet" href="admin.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+</head>
+
+<body>
+
+<!-- =========================================
+     PANTALLA DE LOGIN DE ADMIN
+========================================= -->
+
+<div class="admin-login-wrapper" id="adminLoginView">
+
+    <div class="admin-login-card">
+
+        <div class="admin-login-logo">
+            <div class="admin-login-logo-icon">
+                <i class="fa-solid fa-user-shield"></i>
+            </div>
+            <span>Panel de Administración</span>
+        </div>
+
+        <p class="admin-login-subtitle">
+            Acceso exclusivo para Alberto García.
+        </p>
+
+        <form id="adminLoginForm">
+
+            <label for="adminEmail">Correo</label>
+            <input type="email" id="adminEmail" required autocomplete="username">
+
+            <label for="adminPassword">Contraseña</label>
+            <input type="password" id="adminPassword" required autocomplete="current-password">
+
+            <button type="submit" id="adminLoginBtn">Entrar</button>
+
+        </form>
+
+        <p class="admin-login-error" id="adminLoginError"></p>
+
+        <a href="index.html" class="admin-back-link">
+            <i class="fa-solid fa-arrow-left"></i> Volver al inicio
+        </a>
+
+    </div>
+
+</div>
+
+<!-- =========================================
+     SIN PERMISOS
+========================================= -->
+
+<div class="admin-denied-wrapper" id="adminDeniedView" style="display:none;">
+
+    <div class="admin-denied-card">
+        <i class="fa-solid fa-ban"></i>
+        <h2>No tienes permisos de administrador</h2>
+        <p>Esta cuenta inició sesión correctamente, pero no está autorizada para usar este panel.</p>
+        <button id="deniedLogoutBtn">Cerrar sesión</button>
+    </div>
+
+</div>
+
+<!-- =========================================
+     PANEL (visible solo si es admin)
+========================================= -->
+
+<div class="admin-panel" id="adminPanelView" style="display:none;">
+
+    <header class="admin-header">
+
+        <div class="admin-header-logo">
+            <i class="fa-solid fa-leaf"></i>
+            <span>Alberto García — Panel de Pacientes</span>
+        </div>
+
+        <button id="adminLogoutBtn" class="admin-logout-btn">
+            <i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión
+        </button>
+
+    </header>
+
+    <main class="admin-main">
+
+        <!-- FORM NUEVO PACIENTE -->
+        <section class="admin-card">
+
+            <h2><i class="fa-solid fa-user-plus"></i> Dar de alta a un paciente</h2>
+            <p class="admin-card-subtitle">Se le crea una cuenta y 30 días de acceso a partir de hoy.</p>
+
+            <form id="newPatientForm" class="admin-form">
+                <input type="email" id="newPatientEmail" placeholder="correo@paciente.com" required>
+                <button type="submit" id="newPatientBtn">
+                    <i class="fa-solid fa-plus"></i> Crear acceso
+                </button>
+            </form>
+
+            <p class="admin-error" id="newPatientError"></p>
+
+            <!-- RESULTADO: credenciales generadas -->
+            <div class="credentials-box" id="credentialsBox" style="display:none;">
+
+                <p class="credentials-title">
+                    <i class="fa-solid fa-circle-check"></i>
+                    Cuenta creada. Comparte estos datos con tu paciente:
+                </p>
+
+                <div class="credentials-row">
+                    <span>Correo:</span>
+                    <strong id="credEmail"></strong>
+                </div>
+
+                <div class="credentials-row">
+                    <span>Contraseña:</span>
+                    <strong id="credPassword"></strong>
+                    <button type="button" class="copy-btn" id="copyCredsBtn">
+                        <i class="fa-regular fa-copy"></i> Copiar
+                    </button>
+                </div>
+
+                <div class="credentials-row">
+                    <span>Acceso vence:</span>
+                    <strong id="credExpira"></strong>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- LISTA DE PACIENTES -->
+        <section class="admin-card">
+
+            <h2><i class="fa-solid fa-users"></i> Pacientes con acceso</h2>
+
+            <div id="patientsListWrap">
+                <p class="admin-loading-text" id="patientsLoading">Cargando pacientes...</p>
+                <table class="patients-table" id="patientsTable" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>Correo</th>
+                            <th>Vence</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="patientsTableBody"></tbody>
+                </table>
+                <p class="admin-empty-text" id="patientsEmpty" style="display:none;">
+                    Aún no has dado de alta a ningún paciente.
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="admin.js"></script>
+
+</body>
+</html>
