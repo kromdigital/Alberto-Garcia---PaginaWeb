@@ -544,22 +544,116 @@ body{
         text-align: center;
     }
 
+    .admin-main{
+        padding: 24px 4% 60px;
+        gap: 20px;
+    }
+
     .admin-card{
-        padding: 24px;
+        padding: 22px 18px;
+    }
+
+    .admin-card h2{
+        font-size: 1.2rem;
     }
 
     .admin-form{
         flex-direction: column;
     }
 
+    .admin-form input{
+        min-width: 0;
+        width: 100%;
+    }
+
     .admin-form button{
         justify-content: center;
+        width: 100%;
+    }
+
+    /* CREDENCIALES: apiladas en vez de una fila apretada */
+    .credentials-row{
+        flex-wrap: wrap;
+    }
+
+    .credentials-row span{
+        min-width: 0;
+    }
+
+    .copy-btn{
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+        margin-top: 6px;
+    }
+
+    /* TABLA -> TARJETAS APILADAS */
+    .patients-table thead{
+        display: none;
+    }
+
+    .patients-table,
+    .patients-table tbody,
+    .patients-table tr,
+    .patients-table td{
+        display: block;
+        width: 100%;
+        white-space: normal;
     }
 
     .patients-table{
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
+        overflow-x: visible;
+    }
+
+    .patients-table tr{
+        background: #fff;
+        border: 1px solid #ececec;
+        border-radius: 16px;
+
+        padding: 14px 16px;
+
+        margin-bottom: 14px;
+    }
+
+    .patients-table td{
+        border: none;
+
+        padding: 8px 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+
+        font-size: 13.5px;
+    }
+
+    .patients-table td::before{
+        content: attr(data-label);
+
+        font-weight: 700;
+        color: #999;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+
+        flex-shrink: 0;
+    }
+
+    .patient-actions{
+        justify-content: flex-end;
+    }
+
+}
+
+@media(max-width: 480px){
+
+    .admin-login-card{
+        padding: 32px 22px;
+    }
+
+    .credentials-box{
+        padding: 18px 16px;
     }
 
 }

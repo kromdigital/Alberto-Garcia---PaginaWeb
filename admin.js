@@ -224,14 +224,14 @@ async function cargarPacientes() {
       const fila = document.createElement("tr");
 
       fila.innerHTML = `
-        <td>${data.email || "—"}</td>
-        <td>${expiracion.toLocaleDateString("es-MX", { day: "numeric", month: "short", year: "numeric" })}</td>
-        <td>
+        <td data-label="Correo">${data.email || "—"}</td>
+        <td data-label="Vence">${expiracion.toLocaleDateString("es-MX", { day: "numeric", month: "short", year: "numeric" })}</td>
+        <td data-label="Estado">
           <span class="status-badge ${activo ? 'status-activo' : 'status-expirado'}">
             ${activo ? 'Activo' : 'Expirado'}
           </span>
         </td>
-        <td class="patient-actions">
+        <td data-label="Acciones" class="patient-actions">
           <button class="renovar-btn" data-uid="${uid}">Renovar 30 días</button>
           <button class="revocar-btn" data-uid="${uid}">Revocar</button>
         </td>
